@@ -10,7 +10,7 @@
       public function index() {
          $this->load->helper('form');
          $this->load->helper('url');
-         $this->load->view('OMID/Register');
+         $this->load->view('omid/Register');
       }
 
 
@@ -78,7 +78,7 @@
          );
 
          if ($this->form_validation->run() == FALSE) {
-            $this->load->view('OMID/Register');
+            $this->load->view('omid/Register');
          }
          else
          {
@@ -107,7 +107,7 @@
                   );
                   $this->session->set_userdata('LoggedIn', $SessionArray);
 
-                  $dir=FCPATH."/images/OMID/".$row->PersonTypeId."/".$row->UserId;
+                  $dir=FCPATH."/assets/images/omid/".$row->PersonTypeId."/".$row->UserId;
                    mkdir($dir);
 
                }

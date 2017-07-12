@@ -43,6 +43,19 @@
           }
           return false;
       }
+       public function get_user_by_email($email)
+       {
+           $query = $this->db->get_where('accounts', array('Email' => $email));
+           if($query->num_rows()) return $query->row();
+           return false;
+       }
+       public function get_user($hash)
+       {
+           $query = $this->db->get_where('reset_password', array('Token' => $hash));
+           if($query->num_rows()) return $query->row();
+           return false;
+       }
+
 
 
 
