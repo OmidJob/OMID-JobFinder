@@ -9,7 +9,6 @@
 @font-face {
     font-family: 'Droid';
     src: url('../font/Droid3.ttf');
-
 }
 body {
   background-color: #fff;
@@ -31,6 +30,12 @@ nav{
   margin: 0 auto;
   max-width: 100% !important;
   width: 55%;
+}
+.container-reg {
+  padding: 0 0.5rem;
+  margin: 0 auto;
+  max-width: 100% !important;
+  width: 70%;
 }
 .align-lable-form{
   right:0.75rem !important;
@@ -55,6 +60,18 @@ nav{
   background:url("../images/google-plus.png");
   background-position: center;
   background-repeat: no-repeat;
+}
+.socialbox-omid-register{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding: 26px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.socialbox-omid2-register{
+  position: relative;
+  margin: 0px 0px 0px 20px;
 }
 .collection{
   margin: 0px;
@@ -86,6 +103,10 @@ nav{
     max-width: 100% !important;
     width: 90%;
   }
+}
+.input-field {
+  position: relative;
+   margin-top: 0 !important;
 }
 .login-error{
   color: #f81700;
@@ -284,4 +305,8 @@ nav{
 }
 .progress{
   background-color: rgba(255, 64, 129, 0.22);
+}
+.valign-wrapper p{
+  font-size: 13px;color: #aaa;
+  padding:10px 0px 10px 30px;
 }

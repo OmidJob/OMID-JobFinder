@@ -64,11 +64,9 @@
                 )
             );
          }
-
-
-
-         $this->form_validation->set_rules('Password', 'کلمه عبور', 'trim|required',
-             array('required' => 'وارد کردن %s الزامی است.'));
+         $this->form_validation->set_rules('Password', 'کلمه عبور', 'trim|required|min_length[3]',
+             array('required' => 'وارد کردن %s الزامی است.',
+                   'min_length' => 'رمز عبور باید بیشتر از ۳ کاراکتر باشد'));
 
          $this->form_validation->set_rules('RepeatedPassword', 'تکرار کلمه عبور', 'trim|required|matches[Password]',
              array(
@@ -76,13 +74,11 @@
                  'matches' => 'کلمه های عبور وارد شده باهم تطابق ندارند.'
              )
          );
-
          if ($this->form_validation->run() == FALSE) {
             $this->load->view('omid/Register');
          }
          else
          {
-
             $this->load->model('RegisterModel');
 
             $this->db->db_select('omidframework');
@@ -93,7 +89,6 @@
                 'PSWD1' => SHA1(MD5($this->input->post('Password'))),
                 'PersonTypeId' => $this->input->post('AccountType')
             );
-
             $user =$this->RegisterModel->InsertUserInfo($data);
             if($user)
             {
@@ -106,13 +101,11 @@
                       'PersonTypeId' => $row->PersonTypeId
                   );
                   $this->session->set_userdata('LoggedIn', $SessionArray);
-
-                  $dir=FCPATH."/assets/images/omid/".$row->PersonTypeId."/".$row->UserId;
-                   mkdir($dir);
-
+                  $dir=FCPATH."assets/images/".$row->PersonTypeId."/".$row->UserId;
+                  mkdir($dir);
                }
             }
-              // $this->load->view('Welcome',$data);
+            // $this->load->view('Welcome',$data);
 
             $this->db->db_select('omidservice');
 
@@ -132,9 +125,6 @@
                );
                $this->RegisterModel->InsertEmployerInfo($data);
             }
-
-
-
             redirect('Login', 'refresh');
          }
 
