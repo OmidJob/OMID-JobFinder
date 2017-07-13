@@ -1,9 +1,44 @@
 /*================================================================================
-  Item Name: Materialize - Material Design Admin Template
+  Item Name: OmidPortal Design Admin Template
   Version: 1.0
-  Author: GeeksLabs
-  Author URL: http://www.themeforest.net/user/geekslabs
+  Author: Milad Ranaei && Azam Feyznia
+  Author URL: http://www.omid.com
 ================================================================================*/
+
+/* PRELOADER */
+function preloader(immune, background, color) {
+    $("body").prepend('<div class="preloader"><span class="loading-bar"></span><i class="radial-loader"></i></div>');
+
+    if (immune == true) {
+        $("body > div.preloader").addClass('immune');
+    }
+
+    if (background == 'white') {
+        $("body > div.preloader").addClass('white');
+    }
+
+    else if (background == 'black') {
+        $("body > div.preloader").addClass('black');
+    }
+
+    if (color == 'red') {
+        $("body > div.preloader span.loading-bar").addClass('red-colored');
+        $("body > div.preloader i.radial-loader").addClass('red-colored');
+    }
+    $(window).load(function() {
+        setTimeout(function() {
+            $('.preloader').fadeOut(1000);
+        }, 1000);
+        setTimeout(function() {
+            $('.preloader').remove();
+        }, 2000);
+
+    })
+};
+
+preloader(true, 'white', 'red');
+
+/* #################### END PRELOADER ############################ */
 
 $(function() {
 
@@ -11,16 +46,6 @@ $(function() {
 
   var window_width = $(window).width();
 
-  /*Preloader*/
-  $(window).load(function() {
-    setTimeout(function() {
-      $('body').addClass('loaded');      
-    }, 200);
-  });  
-  
-  $('.show-search').click(function() {
-    $('.search-out').fadeToggle( "50", "linear" );
-  });
 
 
 

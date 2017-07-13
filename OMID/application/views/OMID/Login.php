@@ -70,7 +70,7 @@
             <div class="container">
                 <div class="row">
                     <h2 class="center-align" style="font-size: 35px">ورود</h2>
-                    <p class="center-align" style="font-size: 18px"> ثبت نام نکرده ام ؟ <a href="#" class="btn-flat waves-effect waves-gray" style="padding: 4px;
+                    <p class="center-align" style="font-size: 18px"> ثبت نام نکرده ام ؟ <a href="<?php base_url() ?>register" class="btn-flat waves-effect waves-gray" style="padding: 4px;
 }"><span class="blue-text text-darken-1">ثبت نام کنید</span></a></p>
                     <?php echo form_error('AccountType','<p class="login-error center-align">', '</p>'); ?>
                 </div>

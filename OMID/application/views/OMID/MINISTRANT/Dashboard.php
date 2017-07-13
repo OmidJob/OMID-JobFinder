@@ -1,125 +1,86 @@
-<div id="row">
-    <div id="col-md-8">
-        <div id="row">
-            <!-- CALENDAR-->
-            <div id="col-md-12 col-xs-12">
-                <div id="panel panel-primary " data-collapsed="0">
-                    <div id="panel-heading">
-                        <div id="panel-title">
-                            <i id="fa fa-calendar"></i>
-                            <?php echo 'رویدادها';?>
-                        </div>
-                    </div>
-                    <div id="panel-body" style="padding:0px;">
-                        <div id="calendar-env">
-                            <div id="calendar-body">
-                                <div id="notice_calendar"></div>
+<!-- START CONTENT -->
+
+        <!--start container-->
+        <div class="container">
+
+            <!--card stats start-->
+            <div id="card-stats">
+                <div class="row">
+                    <div class="col s12 m6 l3 right">
+                        <div class="card">
+                            <div class="card-content widget-green-1">
+                                <p class="card-stats-title"><i class="mdi-social-group-add"></i>تعداد کل کارجویان</p>
+                                <h4 class="card-stats-number">
+                                    <?php $this->db->db_select('omidservice');
+                                        echo $this->db->count_all('ministrantpersonalinfo')
+                                    ?>
+                                </h4>
+                                <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 15% <span class="green-text text-lighten-5">از دیروز</span>
+                                </p>
                             </div>
+                            <!-- <div class="card-action  widget-green-1-2">
+                                <div></div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3 right">
+                        <div class="card">
+                            <div class="card-content widget-darkblue-2">
+                                <p class="card-stats-title"><i class="mdi-editor-attach-money"></i>تعداد کل کارفرمایان</p>
+                                <h4 class="card-stats-number">
+                                    <?php $this->db->db_select('omidservice');
+                                    echo $this->db->count_all('employerinfo');?>
+                                </h4>
+                                <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 70% <span class="purple-text text-lighten-5">اخیرا</span>
+                                </p>
+                            </div>
+                            <!-- <div class="card-action widget-darkblue-2-2">
+                                <div ></div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3 right">
+                        <div class="card">
+                            <div class="card-content widget-orange-4">
+                                <p class="card-stats-title"><i class="mdi-action-trending-up"></i>درخواستهای همکاری</p>
+                                <h4 class="card-stats-number">
+                                    <?php
+                                    $this->db->db_select('omidservice');
+                                    $check	=	array(	'ReqDate' => date('Y-m-d') , 'Status' => '1' );
+                                    $query = $this->db->get_where('servicerequests' , $check);
+                                    $RequestToday		=	$query->num_rows();
+                                    echo $RequestToday;
+                                    ?>
+                                </h4>
+                                <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 80% <span class="blue-grey-text text-lighten-5">مجموع</span>
+                                </p>
+                            </div>
+                            <!-- <div class="card-action widget-orange-4-2">
+                                <div ></div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-content widget-lightblue-1">
+                                <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i> تعداد درخواست ها</p>
+                                <h4 class="card-stats-number">1806</h4>
+                                <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-down"></i> 3% <span class="deep-purple-text text-lighten-5">مجموع</span>
+                                </p>
+                            </div>
+                            <!-- <div class="card-action  widget-lightblue-1-2">
+                                <div ></div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
+            <!--card stats end-->
+
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
         </div>
-    </div>
-
-    <div id="col-md-4">
-        <div id="row">
-            <div id="col-md-12">
-
-                <div id="tile-stats tile-red">
-                    <div id="icon"><i id="fa fa-group"></i></div>
-                    <!--<div id="num" data-start="0" data-end="<?php $this->db->db_select('omidservice');
-                                                                 echo $this->db->count_all('employerinfo');?>"
-                         data-postfix="" data-duration="1500" data-delay="0">0</div>-->
-
-
-                    <h3><?php echo 'کارفرما';?></h3>
-                    <p>تعداد کل کارفرمایان
-                        <?php $this->db->db_select('omidservice');
-                        echo $this->db->count_all('employerinfo');?>
-                    </p>
-                </div>
-
-            </div>
-            <div id="col-md-12">
-
-                <div id="tile-stats tile-green">
-                    <div id="icon"><i id="entypo-users"></i></div>
-                    <!--<div id="num" data-start="0" data-end="<?php $this->db->db_select('omidservice');
-                                                                 echo $this->db->count_all('ministrantpersonalinfo');?>"
-                         data-postfix="" data-duration="800" data-delay="0">0</div>-->
-
-                    <h3><?php echo 'کارجو';?></h3>
-                    <p>تعداد کل کارجویان
-                        <?php $this->db->db_select('omidservice');
-                        echo $this->db->count_all('ministrantpersonalinfo');?>
-                    </p>
-                </div>
-
-            </div>
-
-            <div id="col-md-12">
-
-                <div id="tile-stats tile-blue">
-                    <div id="icon"><i id="entypo-chart-bar"></i></div>
-                    <?php
-                    $this->db->db_select('omidservice');
-                    $check	=	array(	'ReqDate' => date('Y-m-d') , 'Status' => '1' );
-                    $query = $this->db->get_where('servicerequests' , $check);
-                    $RequestToday		=	$query->num_rows();
-                    ?>
-                    <!--<div class="num" data-start="0" data-end="<?php echo $RequestToday;?>"
-                         data-postfix="" data-duration="500" data-delay="0">0</div>-->
-
-                    <h3><?php echo 'درخواستهای همکاری';?></h3>
-                    <p>تعداد کل درخواستهای همکاری پذیرفته شده امروز
-                        <?php echo $RequestToday;?>
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-<!--
-<script>
-    $(document).ready(function() {
-
-        var calendar = $('#notice_calendar');
-
-        $('#notice_calendar').fullCalendar({
-            header: {
-                left: 'title',
-                right: 'today prev,next'
-            },
-
-            //defaultView: 'basicWeek',
-
-            editable: false,
-            firstDay: 1,
-            height: 530,
-            droppable: false,
-
-            events: [
-                <?php
-                $notices	=	$this->db->get('servicerequests')->result_array();
-                foreach($notices as $row):
-                ?>
-                {
-                    title: "<?php echo $row['EmployerId'];?>",
-                    //start: new Date(<?php echo date('Y',$row['create_timestamp']);?>, <?php echo date('m',$row['create_timestamp'])-1;?>, <?php echo date('d',$row['create_timestamp']);?>),
-                    //end:	new Date(<?php echo date('Y',$row['create_timestamp']);?>, <?php echo date('m',$row['create_timestamp'])-1;?>, <?php echo date('d',$row['create_timestamp']);?>)
-                },
-                <?php
-                endforeach
-                ?>
-
-            ]
-        });
-    });
-</script>
--->
+        <!--end container-->
+    </section>
+    <!-- END CONTENT -->
+    <!-- LEFT RIGHT SIDEBAR NAV-->
 

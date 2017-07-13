@@ -16,7 +16,7 @@
 
 @font-face {
     font-family: 'Droid';
-    src: url('../Fonts/Droid.ttf');
+    src: url('../font/Droid.ttf');
 
 }
 body {
@@ -522,7 +522,7 @@ ul.side-nav.fixed .profile-btn {
   margin: 0;
   text-transform: capitalize;
   padding: 0;
-  font-size: 18px;
+  font-size: 14px;
   color:#4A525F;
 }
 .user-roal {

@@ -1,177 +1,131 @@
-<div id="SidebarMenu" name="SidebarMenu">
-    <header id="LogoEnv" name="LogoEnv">
+<aside id="left-sidebar-nav">
+    <ul id="slide-out" class="side-nav fixed leftside-navigation highlight">
+        <li class="user-details">
+            <div class="row">
 
-        <!-- logo -->
-        <div id="Logo" name="Logo" style=" ">
-            <?php
+                <!-- this is for Personal Avatar photo -->
+                <?php
                 $this->db->db_select('omidservice');
                 $this->db->where("Email", $SessionData['Email']);
                 $Ministrant = $this->db->get("ministrantpersonalinfo")->result();
-                $ImageAddress='NoPhoto.png';
+                $ImageAddress='avatar.jpg';
                 foreach ($Ministrant as $row)
                 {
                     if($row->ImageName)
-                    $ImageAddress= 'Ministrant/'.$SessionData['UserId'].'/Personal/'.$row->ImageName;
+                        $ImageAddress= 'Ministrant/'.$SessionData['UserId'].'/Personal/'.$row->ImageName;
                 }
-            ?>
-            <a href="<?php echo base_url();?>">
-                <img src="<?php echo base_url();?>/images/OMID/<?php echo $ImageAddress;?>"  style="height:128px;"/>
-            </a>
-        </div>
+                ?>
+                <!-- End Avatar -->
 
-        <!-- logo collapse icon -->
-        <div id="SidebarCollapse" name="SidebarCollapse" style="height: 33px;">
-            <a href="#" id="SidebarCollapseIconWithAnimation" name="SidebarCollapseIconWithAnimation">
+                <div class="col col s4 m4 l4">
+                    <img src="<?php echo base_url();?>assets/images/<?php echo $ImageAddress;?>" alt="" class="circle responsive-img valign profile-image">
+                </div>
+                <div class="col col s8 m8 l8">
+                    <ul id="profile-dropdown" class="dropdown-content">
+                        <li><a href="<?php echo base_url() ?>index.php/<?php echo $SessionData['PersonTypeId'];?>/manage_profile"><i class="mdi-action-face-unlock"></i> پروفایل</a>
+                        </li>
+                        <li><a href="#"><i class="mdi-action-settings"></i> تنظیمات</a>
+                        </li>
+                        <li><a href="#"><i class="mdi-communication-live-help"></i> راهنما</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="mdi-action-lock-outline"></i> بسته شدن</a>
+                        </li>
+                        <li><a href="<?php echo base_url();?>index.php/Login/Logout"><i class="mdi-hardware-keyboard-tab"></i> خروج</a>
+                        </li>
+                    </ul>
+                    <a class="btn-flat dropdown-button waves-effect waves-light profile-btn" href="#" data-activates="profile-dropdown">
+                        <?php if($SessionData['PersonTypeId']=='MINISTRANT') echo 'کارجو';
+                        elseif($SessionData['PersonTypeId']=='EMPLOYER') echo 'کارفرما';
+                        ?>
+                        <i class="mdi-navigation-arrow-drop-down left"></i></a>
+                    <p class="user-roal">
+                        <?php echo $SessionData['Email'] ?>
+                    </p>
+                    <a style="display: inline-block;;padding: 0 2px" href="#" class="waves-effect waves-blue-grey darken-3 btn-flat red-text text-darken-1"><i class="mdi-action-settings-power" style="font-size: 18px"></i></a>
+                    <a style="display: inline-block;;padding: 0 2px" href="#" class="waves-effect waves-blue-grey darken-3 btn-flat"><i class="mdi-communication-forum" style="font-size: 18px"></i></a>
+                    <a style="display: inline-block;;padding: 0 2px" href="#" class="waves-effect waves-blue-grey darken-3 btn-flat grey-text text-lighten-1"><i class="mdi-communication-email" style="font-size: 18px"></i></a>
+                </div>
+            </div>
 
-                <i id="EntypoMenu" name="EntypoMenu"></i>
-            </a>
-        </div>
-
-        <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
-        <div id="SidebarMobileMenu-VisibleXs" name="SidebarMobileMenu-VisibleXs">
-            <a href="#" id="WithAnimation" name="WithAnimation">
-                <i id="EntypoMenu" name="EntypoMenu"></i>
-            </a>
-        </div>
-    </header>
-
-
-    <div style="border-top:1px solid ;background-color: #7D1935;height: 3px;"></div>
-
-    <ul id="main-menu" class="">
-        <!-- add class "multiple-expanded" to allow multiple submenus to open -->
-        <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-
-        <!-- DASHBOARD -->
-        <li class="<?php //if($PageName == 'Dashboard')echo 'active';?> ">
-            <a href="<?php echo base_url();?>index.php/MINISTRANT/Dashboard">
-                <i id="entypo-gauge"></i>
-                <span><?php echo 'داشبورد';?></span>
-            </a>
         </li>
 
-
-
-        <!-- USER -->
-        <li class="<?php /*if($PageName == 'UserInfo' ||
-            $page_name == 'student_information' ||
-            $page_name == 'student_marksheet')
-            echo 'opened active has-sub';*/?> ">
-            <a href="#">
-                <i id="fa fa-group"></i>
-                <span><?php echo'اطلاعات کاربری';?></span>
-            </a>
-            <ul>
-                <!-- PERSONAL INFO -->
-                <li class="<?php //if($PageName == 'student_add')echo 'active';?> ">
-                    <a href="<?php echo base_url();?>index.php/Ministrant/PersonalInfo">
-                        <span><i id="entypo-dot"></i> <?php echo 'اطلاعات فردی';?></span>
+        <li class="bold"><a href="<?php echo base_url();?>index.php/MINISTRANT/Dashboard" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>داشبورد کاربری</a>
+        </li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li class="bold">
+                    <a class="collapsible-header waves-effect waves-cyan">
+                        <i class="mdi-action-invert-colors"></i> اطلاعات کاربری
+                        <i class="mdi-hardware-keyboard-arrow-down left" style="font-size: 20px">
+                        </i>
+                    </a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="<?php echo base_url();?>index.php/Ministrant/PersonalInfo">اطلاعات فردی</a>
+                            </li>
+                            <li><a href="<?php echo base_url();?>index.php/Ministrant/ContactInfo">اطلاعات تماس</a>
+                            </li>
+                            <li><a href="<?php echo base_url();?>index.php/Ministrant/JobExperiencesInfo">تجربیات شغلی</a>
+                            </li>
+                            <li><a href="<?php echo base_url();?>index.php/Ministrant/EducationalInfo">اطلاعات تحصیلی</a>
+                            </li>
+                            <li><a href="<?php echo base_url();?>index.php/Ministrant/Capabilities">توانمندی ها</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bold">
+                    <a href="<?php echo base_url();?>index.php//Ministrant/MySkills" class="waves-effect waves-cyan">
+                        <i class="mdi-editor-insert-invitation"></i> مهارت های من
                     </a>
                 </li>
-
-                <!-- CONTACT INFO -->
-                <li class="<?php //if($page_name == 'student_information')echo 'opened active';?> ">
-                    <a href="<?php echo base_url();?>index.php/Ministrant/ContactInfo">
-                        <span><i id="entypo-dot"></i> <?php echo 'اطلاعات تماس';?></span>
+                <li class="bold">
+                    <a href="<?php echo base_url();?>index.php//Ministrant/CooperationRequests" class="waves-effect waves-cyan">
+                        <i class="mdi-editor-insert-invitation"></i>درخواست همکاری با من
                     </a>
                 </li>
-
-                <!-- JOB EXPERIENCES -->
-                <li class="<?php //if($page_name == 'student_marksheet')echo 'opened active';?> ">
-                    <a href="<?php echo base_url();?>index.php/Ministrant/JobExperiencesInfo">
-                        <span><i id="entypo-dot"></i> <?php echo 'تجربیات شغلی';?></span>
+                <li class="bold">
+                    <a href="app-calendar.html" class="waves-effect waves-cyan">
+                        <i class="mdi-editor-insert-invitation"></i>علاقه مندی ها
                     </a>
-
                 </li>
-
-
-                <!-- EDUCATIONAL INFORMATION -->
-                <li class="<?php //if($page_name == 'student_marksheet')echo 'opened active';?> ">
-                    <a href="<?php echo base_url();?>index.php/Ministrant/EducationalInfo">
-                        <span><i id="entypo-dot"></i> <?php echo 'اطلاعات تحصیلی';?></span>
+                <li class="bold">
+                    <a href="app-calendar.html" class="waves-effect waves-cyan">
+                        <i class="mdi-editor-insert-invitation"></i>معرفی به دوستان
                     </a>
-
                 </li>
-
-
-                <!-- CAPABILITIES -->
-                <li class="<?php //if($page_name == 'student_marksheet')echo 'opened active';?> ">
-                    <a href="<?php echo base_url();?>index.php/Ministrant/Capabilities">
-                        <span><i id="entypo-dot"></i> <?php echo 'توانمندی ها';?></span>
+                <li class="bold">
+                    <a href="app-calendar.html" class="waves-effect waves-cyan">
+                        <i class="mdi-editor-insert-invitation"></i>
+                        <span class="new badge left" data-badge-caption="جدید" style="position: relative;right: 0 !important; ">۴
+                                    </span>لغو عضویت
                     </a>
-
+                </li>
+                <li class="bold">
+                    <a href="app-widget.html" class="waves-effect waves-cyan">
+                        <i class="mdi-device-now-widgets"></i>
+                        <span class="new badge left" data-badge-caption="دانلود" style="position: relative;right: 0 !important;background-color: #ff7171 ">۲
+                                    </span>امار دانلود رزومه
+                    </a>
                 </li>
             </ul>
+        <li class="li-hover"><div class="divider"></div></li>
+        <li class="li-hover"><p class="ultra-small margin center">درصد پیشرفت رزومه</p></li>
+        <li class="li-hover">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="sample-chart-wrapper">
+                        <!-- <div class="ct-chart ct-golden-section" id="ct2-chart"></div> -->
+                        <div class="center small" id="bluecircle" data-percent="78">
+                        </div>
+                    </div>
+                    <a class="waves-effect waves-teal btn-flat center modal-trigger" href="#modal1">راهنما</a>
+                </div>
+
+            </div>
         </li>
-
-
-        <!-- MY SKILLS -->
-        <li class="<?php //if($PageName == 'Dashboard')echo 'active';?> ">
-            <a href="<?php echo base_url();?>index.php/Ministrant/MySkills">
-                <i id="entypo-gauge"></i>
-                <span><?php echo 'مهارتهای من';?></span>
-            </a>
-        </li>
-
-
-        <!-- COOPERATION REQUESTS -->
-        <li class="<?php //if($PageName == 'Dashboard')echo 'active';?> ">
-            <a href="<?php echo base_url();?>index.php/Ministrant/CooperationRequests">
-                <i id="entypo-gauge"></i>
-                <span><?php echo 'درخواستهای همکاری با من';?></span>
-            </a>
-        </li>
-
-        <!-- INTERESTS -->
-        <li class="<?php //if($PageName == 'Dashboard')echo 'active';?> ">
-            <a href="<?php echo base_url();?>index.php?MINISTRANT/Dashboard">
-                <i id="entypo-gauge"></i>
-                <span><?php echo 'علاقمندیها';?></span>
-            </a>
-        </li>
-
-
-        <!-- INTRODUCE TO FRIENDS -->
-        <li class="<?php //if($PageName == 'Dashboard')echo 'active';?> ">
-            <a href="<?php echo base_url();?>index.php?MINISTRANT/Dashboard">
-                <i id="entypo-gauge"></i>
-                <span><?php echo 'معرفی به دوستان';?></span>
-            </a>
-        </li>
-
-
-        <!-- DEACTIVE -->
-        <li class="<?php //if($PageName == 'Dashboard')echo 'active';?> ">
-            <a href="<?php echo base_url();?>index.php/Ministrant/Deactive">
-                <i id="entypo-gauge"></i>
-                <span><?php echo 'لغو عضویت';?></span>
-            </a>
-        </li>
-
-
-        <!-- CHANGE PASSWORD -->
-        <li class="<?php //if($PageName == 'Dashboard')echo 'active';?> ">
-            <a href="<?php echo base_url();?>index.php/Ministrant/ChangePassword">
-                <i id="entypo-gauge"></i>
-                <span><?php echo 'تغییر رمز ورود';?></span>
-            </a>
-        </li>
-
-        <!-- EXIT -->
-        <li class="<?php //if($PageName == 'Dashboard')echo 'active';?> ">
-            <a href="<?php echo base_url();?>index.php/Login/Logout">
-                <i id="entypo-gauge"></i>
-                <span><?php echo 'خروج';?></span>
-            </a>
-        </li>
-
     </ul>
+    <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light btn-flat hide-on-large-only right"><i class="mdi-navigation-menu text-white" ></i></a>
 
-
-</div>
-<div id="SidebarCollapse" name="SidebarCollapse" style="height: 573px;">
-    <a href="#" id="SidebarCollapseIconWithAnimation" name="SidebarCollapseIconWithAnimation">
-
-        <i id="EntypoMenu" name="EntypoMenu"></i>
-    </a>
-</div>
+</aside>
