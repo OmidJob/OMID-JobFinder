@@ -41,7 +41,7 @@
     -webkit-animation: loading-bar 3s 1;
     animation: loading-bar 3s 1;
     display: block;
-    height: 3px;
+    height: 4px;
     background-color: #ea6052;
     opacity: 0;
     transition: width .5s;

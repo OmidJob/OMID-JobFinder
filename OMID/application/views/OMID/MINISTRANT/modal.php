@@ -1,5 +1,5 @@
 <!-- Modal Structure for  add add resume -->
-<a href="#modal5" class="btn-floating tooltipped btn-large waves-effect waves-light add-resume pink accent-3 modal-trigger pulse" data-position="top" data-tooltip="تکمیل رزومه" ><i class="mdi-content-add"></i></a>
+<a href="#modal5" class="btn-floating tooltipped btn-large waves-effect waves-light add-resume pink accent-3 modal-trigger" data-position="top" data-tooltip="تکمیل رزومه" ><i class="mdi-content-add"></i></a>
     <div id="modal5" class="modal bottom-sheet white z-depth-5">
         <div class="modal-content">
             <h5 class="center" style="padding: 15px 0px;color: #467298"><i class="mdi-action-assignment" style="font-size: 35px;margin: 0px 0px 0px 10px;color: #555"></i>تکمیل رزومه</h5>

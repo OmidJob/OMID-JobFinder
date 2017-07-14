@@ -27,6 +27,8 @@
     <link href="<?php echo base_url() ?>/assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
 
     <link href="<?php echo base_url() ?>/assets/css/login.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- INCLUDE PRELOADER -->
+    <link href="<?php echo base_url() ?>assets/css/preloader.css" type="text/css" rel="stylesheet" media="screen,projection">
 
 
     <!-- **************************************** -->
@@ -35,13 +37,6 @@
 </head>
 
 <body class="white">
-<!-- Start Page Loading -->
-<div id="loader-wrapper">
-    <div id="loader"></div>
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-</div>
-<!-- End Page Loading -->
 
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 

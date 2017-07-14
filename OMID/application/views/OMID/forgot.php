@@ -27,7 +27,8 @@
     <link href="<?php echo base_url() ?>assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
 
     <link href="<?php echo base_url() ?>assets/css/login.css" type="text/css" rel="stylesheet" media="screen,projection">
-
+    <!-- INCLUDE PRELOADER -->
+    <link href="<?php echo base_url() ?>assets/css/preloader.css" type="text/css" rel="stylesheet" media="screen,projection">
 
     <!-- **************************************** -->
 
@@ -35,13 +36,6 @@
 </head>
 
 <body class="white">
-<!-- Start Page Loading -->
-<div id="loader-wrapper">
-    <div id="loader"></div>
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-</div>
-<!-- End Page Loading -->
 
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 
@@ -89,7 +83,7 @@
                         ?>
                         <div class="row">
                             <div class="input-field col s2"></div>
-                            <div class="input-field col s8">
+                            <div class="input-field col s12">
                                 <?php echo form_input(array('id'=>'email','type'=>'email','class'=>'validate','name'=>'Emailrecovery','autofocus'=>'autofocus', 'value'=> set_value('Email'),'required'=>"" ,'aria-required'=>"true")); ?>
                                 <label for="email" class="align-lable-form">ایمیل همانند : youremail@gmail.com</label>
                             </div>

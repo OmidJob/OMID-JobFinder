@@ -27,7 +27,7 @@ function preloader(immune, background, color) {
     }
     $(window).load(function() {
         setTimeout(function() {
-            $('.preloader').fadeOut(1000);
+            $('.preloader').fadeOut(2000);
         }, 1000);
         setTimeout(function() {
             $('.preloader').remove();
@@ -35,7 +35,6 @@ function preloader(immune, background, color) {
 
     })
 };
-
 preloader(true, 'white', 'red');
 
 /* #################### END PRELOADER ############################ */
