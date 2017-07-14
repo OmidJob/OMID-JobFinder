@@ -1,5 +1,5 @@
 <aside id="left-sidebar-nav">
-    <ul id="slide-out" class="side-nav fixed leftside-navigation highlight">
+    <ul id="slide-out" class="side-nav fixed leftside-navigation highlight" >
         <li class="user-details">
             <div class="row">
 
@@ -49,8 +49,7 @@
             </div>
 
         </li>
-
-        <li class="bold"><a href="<?php echo base_url();?>index.php/MINISTRANT/Dashboard" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>داشبورد کاربری</a>
+        <li class="bold" ><a href="<?php echo base_url();?>index.php/MINISTRANT/Dashboard" class="waves-effect waves-cyan" ><i class="mdi-action-dashboard"></i>داشبورد کاربری</a>
         </li>
         <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
@@ -126,6 +125,6 @@
             </div>
         </li>
     </ul>
-    <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light btn-flat hide-on-large-only right"><i class="mdi-navigation-menu text-white" ></i></a>
+    <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light btn-flat hide-on-large-only right" ><i class="mdi-navigation-menu text-white" ></i></a>
 
 </aside>

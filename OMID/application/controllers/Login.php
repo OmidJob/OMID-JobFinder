@@ -64,9 +64,10 @@ class Login extends CI_Controller {
        $data = array(
            'Email' => $this->input->post('Email'),
            'PSWD1' => $this->input->post('Password'),
-           'PersonTypeId' => $this->input->post('AccountType')
+           'PersonTypeId' => $this->input->post('AccountType'),
        );
        $user =$this->LoginModel->CheckInfo($data);
+
        if($user)
          {
 
@@ -83,13 +84,14 @@ class Login extends CI_Controller {
             );
             $this->input->set_cookie($date_cookie);
           }
+
           $SessionArray = array();
           foreach($user as $row)
           {
            $SessionArray = array(
                'UserId' => $row->UserId,
                'Email' => $row->Email,
-               'PersonTypeId' => $row->PersonTypeId
+               'PersonTypeId' => $row->PersonTypeId,
            );
            $this->session->set_userdata('LoggedIn', $SessionArray);
           }
@@ -100,7 +102,6 @@ class Login extends CI_Controller {
             return false;
          }
       }
-
     // forgot password
       public function Forgot(){
           $this->load->library('form_validation');

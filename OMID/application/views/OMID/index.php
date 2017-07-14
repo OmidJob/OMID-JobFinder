@@ -45,6 +45,9 @@
 
     <!-- INCLUDE PRELOADER -->
     <link href="<?php echo base_url() ?>assets/css/preloader.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- INCLUDE TOUR JQUERY -->
+    <link href="<?php echo base_url() ?>assets/css/tour/tour.css" type="text/css" rel="stylesheet" media="screen,projection">
+
 </head>
 
 <body>
@@ -107,6 +110,62 @@
     <?php include $SessionData['PersonTypeId'].'/modal.php' ?>
     <!-- END MINISTRANT MODAL -->
 
+    <?php if ( $FirstRunWizard == 0 ){?>
+    <ul class="cd-tour-wrapper">
+        <li class="cd-single-step">
+            <span>Step 1</span>
+            <div class="cd-more-info left">
+                <h2>درسترسی به ایتم ها و امکانات</h2>
+                <p>شما میتوانید از این قسمت به تک تک منو ها از جمله اطلاعات فردی و ساخت رزومه و ... دسترسی داشته باشید</p>
+                <img src="img/step-1.png" alt="step 1">
+            </div>
+        </li> <!-- .cd-single-step -->
+
+        <li class="cd-single-step">
+            <span>Step 2</span>
+
+            <div class="cd-more-info bottom">
+                <h2>رویداد ها و پیام ها</h2>
+                    <ul>
+                        <li>
+                            <i class="mdi-social-notifications"></i>تمامی رویداد هایتان را اینجا مشاهده کنید
+                        </li>
+                        <li>
+                            <i class="mdi-content-markunread"></i>کلیه پیام های شما اینجا قابل دسترس هستند
+                        </li>
+                        <li>
+                            <i class="mdi-communication-chat"></i>چت های خود را اینجا دنبال کنید
+                        </li>
+                    </ul>
+                <img src="img/step-2.png" alt="step 2">
+            </div>
+        </li> <!-- .cd-single-step -->
+
+        <li class="cd-single-step">
+            <span>Step 3</span>
+            <div class="cd-more-info top">
+                <h2>تکمیل رزومه خود</h2>
+                <ul>
+                    <li>
+&nbsp;                      با کلیک بر روی <a class="btn-floating btn-small pink accent-3 pulse" ><i class="mdi-content-add"></i></a>&nbsp;میتوانید رزومه خود را تکمیل کنید تا کارفرمایان بهتر شما را پیدا و درخواست همکاری دهند
+                    </li>
+                </ul>
+            </div>
+        </li> <!-- .cd-single-step -->
+    </ul> <!-- .cd-tour-wrapper -->
+    <?php
+    $first = array(
+        'FirstRunWizard' => 1
+    );
+    $this->db->db_select('omidframework');
+    $this->db->where("Email", $SessionData['Email']);
+    $this->db->update("accounts", $first);
+
+    };
+    ?>
+
+</div>
+    <div class="cd-cover-layer"></div>
 </div>
 
 <!-- END MAIN -->
@@ -118,9 +177,13 @@
 
     <!-- jQuery Library -->
     <script type="text/javascript" src="<?php echo base_url() ?>/assets/js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>/assets/js/jquery.mobile.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>/assets/js/modernizr.js"></script>
     <!--materialize js-->
     <script type="text/javascript" src="<?php echo base_url() ?>/assets/js/materialize.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>/assets/js/plugins/percircle/percircle.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>/assets/js/plugins/tour/main.js"></script>
+
     <!--scrollbar-->
     <script type="text/javascript" src="<?php echo base_url() ?>/assets/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 

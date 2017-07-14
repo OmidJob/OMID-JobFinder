@@ -33,11 +33,21 @@ class Ministrant extends CI_Controller {
     {
         if(!$this->session->userdata('LoggedIn'))
             redirect('Login', 'refresh');
+
+        // SHOW FIRST RUN WIZARD IN INDEX
+        $SessionData = $this->session->userdata('LoggedIn');
+        $this->db->where('UserId', $SessionData['UserId']);
+        $this->db->where('PersonTypeId', $SessionData['PersonTypeId']);
+        $user=$this->db->get('accounts')->result();
+        if($user){
+            $PageData['FirstRunWizard'] = $user[0]->FirstRunWizard;
+        }//end if
+
         $PageData['PageName']  = 'Dashboard';
         $PageData['PageTitle'] = 'داشبورد کارجو';
+
         $this->load->view('OMID/index', $PageData);
     }
-
 
     function PersonalInfo()
     {
